@@ -55,25 +55,39 @@ It strings the embedded systems notes scattered across 9 independent repositorie
 ## System Overview
 
 ```mermaid
-flowchart TD
-    N1["01 · C Language"]
-    N2["02 · Data Structures"]
-    N3["03 · Analog Circuits"]
-    N4["04 · Digital Logic"]
-    N5["05 · Schematic and PCB"]
-    N6["06 · STM32 MCU"]
-    N7["07 · FreeRTOS"]
-    N8["08 · Linux and Shell"]
-    N9["09 · Linux Applications"]
+flowchart TB
+    subgraph P1["Foundations"]
+        direction LR
+        N1["01<br/>C Language"]
+        N2["02<br/>Data Structures"]
+        N1 --> N2
+    end
 
-    N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> N9
+    subgraph P2["Hardware"]
+        direction LR
+        N3["03<br/>Analog Circuits"]
+        N4["04<br/>Digital Logic"]
+        N5["05<br/>Schematic and PCB"]
+        N3 --> N4 --> N5
+    end
 
-    classDef soft fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
-    classDef hw fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
-    classDef sys fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
-    class N1,N2 soft
-    class N3,N4,N5 hw
-    class N6,N7,N8,N9 sys
+    subgraph P3["Systems"]
+        direction LR
+        N6["06<br/>STM32 MCU"]
+        N7["07<br/>FreeRTOS"]
+        N8["08<br/>Linux and Shell"]
+        N9["09<br/>Linux Applications"]
+        N6 --> N7 --> N8 --> N9
+    end
+
+    P1 --> P2 --> P3
+
+    classDef c1 fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
+    classDef c2 fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
+    classDef c3 fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
+    class N1,N2 c1
+    class N3,N4,N5 c2
+    class N6,N7,N8,N9 c3
 ```
 
 ## Repository Index
@@ -91,16 +105,6 @@ Listed in recommended reading order, from language fundamentals through to syste
 | `07` [**freertos-learning-notes**](https://github.com/Ashleycurry/freertos-learning-notes) | Task scheduling, kernel porting, queues, semaphores, event groups, and memory management |
 | `08` [**linux-shell-regex-notes**](https://github.com/Ashleycurry/linux-shell-regex-notes) | Ubuntu system administration, shell scripting, and regular expression text processing |
 | `09` [**linux-application-development-notes**](https://github.com/Ashleycurry/linux-application-development-notes) | GCC toolchain, file I/O, processes and threads, IPC, sockets, and epoll |
-
-## Hands-on Projects
-
-Course notes answer "do I know it"; project repositories answer "have I built it". The three repositories below turn the path above into practice, each a complete, buildable, reproducible project:
-
-| Project | Technical Highlights |
-| :--- | :--- |
-| **[stm32-grayscale-trace-car](https://github.com/Ashleycurry/stm32-grayscale-trace-car)** | STM32F103C8T6 · 8-channel grayscale line following · CD4051 multiplexed sampling · PID closed loop · MG995 servo · L298N drive |
-| **[stm32f407-smart-timer-power-controller](https://github.com/Ashleycurry/stm32f407-smart-timer-power-controller)** | STM32F407VE · 4-digit 7-segment display · key and UART dual-channel control · relay switching · thermal protection |
-| **[sync-calc-params-motion-control](https://github.com/Ashleycurry/sync-calc-params-motion-control)** | Dual-axis stepper synchronization · proportional velocity scaling · trapezoidal motion profiling |
 
 ## Repository Conventions
 

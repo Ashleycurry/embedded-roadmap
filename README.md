@@ -55,25 +55,39 @@
 ## 系统总览
 
 ```mermaid
-flowchart TD
-    N1["01 · C 语言"]
-    N2["02 · 数据结构与算法"]
-    N3["03 · 模拟电路"]
-    N4["04 · 数字电路与组成"]
-    N5["05 · 原理图与 PCB"]
-    N6["06 · STM32 单片机"]
-    N7["07 · FreeRTOS"]
-    N8["08 · Linux 与 Shell"]
-    N9["09 · Linux 应用层"]
+flowchart TB
+    subgraph P1["基础"]
+        direction LR
+        N1["01<br/>C 语言"]
+        N2["02<br/>数据结构与算法"]
+        N1 --> N2
+    end
 
-    N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> N9
+    subgraph P2["硬件"]
+        direction LR
+        N3["03<br/>模拟电路"]
+        N4["04<br/>数字电路与组成"]
+        N5["05<br/>原理图与 PCB"]
+        N3 --> N4 --> N5
+    end
 
-    classDef soft fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
-    classDef hw fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
-    classDef sys fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
-    class N1,N2 soft
-    class N3,N4,N5 hw
-    class N6,N7,N8,N9 sys
+    subgraph P3["系统"]
+        direction LR
+        N6["06<br/>STM32 单片机"]
+        N7["07<br/>FreeRTOS"]
+        N8["08<br/>Linux 与 Shell"]
+        N9["09<br/>Linux 应用层"]
+        N6 --> N7 --> N8 --> N9
+    end
+
+    P1 --> P2 --> P3
+
+    classDef c1 fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
+    classDef c2 fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
+    classDef c3 fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
+    class N1,N2 c1
+    class N3,N4,N5 c2
+    class N6,N7,N8,N9 c3
 ```
 
 ## 仓库索引
@@ -91,16 +105,6 @@ flowchart TD
 | `07` [**freertos-learning-notes**](https://github.com/Ashleycurry/freertos-learning-notes) | 任务调度、内核移植、队列、信号量、事件组、任务通知与内存管理 |
 | `08` [**linux-shell-regex-notes**](https://github.com/Ashleycurry/linux-shell-regex-notes) | Ubuntu 系统管理、Shell 脚本编程与正则表达式文本处理 |
 | `09` [**linux-application-development-notes**](https://github.com/Ashleycurry/linux-application-development-notes) | GCC 工具链、文件 I/O、进程线程、进程间通信、Socket 与 epoll |
-
-## 配套工程实践
-
-课程笔记解决「知道」，工程仓库解决「做过」。以下三个仓库是上面路径的落地实践，均为可编译、可复现的完整工程：
-
-| 工程 | 技术要点 |
-| :--- | :--- |
-| **[stm32-grayscale-trace-car](https://github.com/Ashleycurry/stm32-grayscale-trace-car)** | STM32F103C8T6 · 八路灰度循迹 · CD4051 多路采样 · PID 闭环 · MG995 舵机 · L298N 驱动 |
-| **[stm32f407-smart-timer-power-controller](https://github.com/Ashleycurry/stm32f407-smart-timer-power-controller)** | STM32F407VE · 四位数码管 · 按键与串口双通道控制 · 继电器通断 · 过温保护 |
-| **[sync-calc-params-motion-control](https://github.com/Ashleycurry/sync-calc-params-motion-control)** | 双轴步进同步 · 比例速度缩放 · 梯形加减速规划 |
 
 ## 仓库约定
 
