@@ -9,12 +9,28 @@
 <p>
   <a href="https://github.com/Ashleycurry?tab=repositories"><img src="https://img.shields.io/badge/Repositories-9-0EA5E9?style=flat-square&logo=github&logoColor=white" alt="Repositories" /></a>
   <img src="https://img.shields.io/badge/Course_Docs-16-0284C7?style=flat-square" alt="Course documents" />
-  <img src="https://img.shields.io/badge/Stages-3-38BDF8?style=flat-square" alt="Stages" />
   <img src="https://img.shields.io/badge/Language-中文%20%7C%20English-BAE6FD?style=flat-square" alt="Bilingual" />
   <img src="https://img.shields.io/badge/License-MIT-0369A1?style=flat-square" alt="MIT" />
 </p>
 
 [中文](README.md) | [English](README-English.md)
+
+<p>
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black" alt="C" />
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++" />
+  <img src="https://img.shields.io/badge/ARM_Cortex--M-0091BD?style=flat-square&logo=arm&logoColor=white" alt="ARM Cortex-M" />
+  <img src="https://img.shields.io/badge/STM32-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white" alt="STM32" />
+  <img src="https://img.shields.io/badge/FreeRTOS-2C3E50?style=flat-square" alt="FreeRTOS" />
+  <img src="https://img.shields.io/badge/EasyEDA-0EA5E9?style=flat-square" alt="EasyEDA" />
+  <br />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white" alt="Bash" />
+  <img src="https://img.shields.io/badge/GCC-A42E2B?style=flat-square&logo=gnu&logoColor=white" alt="GCC" />
+  <img src="https://img.shields.io/badge/Makefile-6D00CC?style=flat-square" alt="Makefile" />
+  <img src="https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white" alt="CMake" />
+  <img src="https://img.shields.io/badge/Keil_MDK-394049?style=flat-square" alt="Keil MDK" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
+</p>
 
 </div>
 
@@ -24,94 +40,57 @@
 
 这是一个**索引仓库**，不存放课程文件本身。
 
-它把分散在 9 个独立仓库中的嵌入式课程笔记，按 **硬件地基 → 软件地基 → 系统开发** 三个阶段重新编排成一条可执行的学习路径。每个仓库只负责一个明确的知识域，可以单独克隆、单独阅读，也可以沿着这条路径顺序推进。
+它把分散在 9 个独立仓库中的嵌入式课程笔记，按一条从语言基础到系统开发的主线串联起来，形成一条可执行的阅读路径。每个仓库只负责一个明确的知识域，可以单独克隆、单独阅读，也可以按编号顺序推进。
 
 ```text
 > power on ...
 [BOOT] loading embedded-roadmap v1.0.0
-[ OK ] hardware layer   · 3 repositories   · analog / digital / pcb
-[ OK ] software layer   · 3 repositories   · c / ds&a / linux
-[ OK ] system layer     · 3 repositories   · stm32 / freertos / linux-app
-[INFO] recommended entry : analog-circuits-and-components
+[ OK ] 01-02  language & algorithms  · c / data structures
+[ OK ] 03-05  circuits & hardware    · analog / digital / pcb
+[ OK ] 06-09  chips & systems        · stm32 / freertos / linux
+[INFO] recommended entry : c-systems-programming-handbook
 [INFO] target            : read a datasheet, bring up a chip, ship a firmware
 ```
 
 ## 系统总览
 
 ```mermaid
-flowchart LR
-    subgraph S0["STAGE 0 · 硬件地基"]
-        direction TB
-        A1["模拟电路<br/>与常用元器件"]
-        A2["数字电路<br/>与计算机组成"]
-        A3["原理图与<br/>PCB 设计"]
-    end
+flowchart TD
+    N1["01 · C 语言"]
+    N2["02 · 数据结构与算法"]
+    N3["03 · 模拟电路"]
+    N4["04 · 数字电路与组成"]
+    N5["05 · 原理图与 PCB"]
+    N6["06 · STM32 单片机"]
+    N7["07 · FreeRTOS"]
+    N8["08 · Linux 与 Shell"]
+    N9["09 · Linux 应用层"]
 
-    subgraph S1["STAGE 1 · 软件地基"]
-        direction TB
-        B1["C 语言<br/>系统编程"]
-        B2["数据结构<br/>与算法"]
-        B3["Linux · Shell<br/>正则表达式"]
-    end
+    N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> N9
 
-    subgraph S2["STAGE 2 · 系统开发"]
-        direction TB
-        C1["STM32<br/>单片机开发"]
-        C2["FreeRTOS<br/>实时操作系统"]
-        C3["Linux<br/>应用层开发"]
-    end
-
-    S0 ==> S1 ==> S2
+    classDef soft fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
+    classDef hw fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
+    classDef sys fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
+    class N1,N2 soft
+    class N3,N4,N5 hw
+    class N6,N7,N8,N9 sys
 ```
 
-## 学习路径
+## 仓库索引
 
-### STAGE 0 · 硬件地基
+按推荐阅读顺序排列，从语言基础一路走到系统开发。
 
-先建立对电流、电平、时序和器件的直觉，再看懂一颗芯片是如何被设计出来、又是如何被画到板子上的。
-
-| 仓库 | 关键主题 | 文档 |
-| :--- | :--- | :---: |
-| **[analog-circuits-and-components](https://github.com/Ashleycurry/analog-circuits-and-components)** | `Ohm's Law` `RLC` `Diode` `BJT` `MOSFET` `Pull-up/Down` `Filter` `Multimeter` `Oscilloscope` | `2` |
-| **[digital-logic-and-computer-organization](https://github.com/Ashleycurry/digital-logic-and-computer-organization)** | `Logic Gates` `Flip-Flop` `ALU` `Von Neumann` `Instruction Set` `Bus` `Bootloader` | `1` |
-| **[schematic-and-pcb-design](https://github.com/Ashleycurry/schematic-and-pcb-design)** | `EasyEDA` `Schematic` `Footprint` `Multi-layer` `DRC` `Soldering` | `2` |
-
-> **阶段产出**：能读懂元器件数据手册的关键参数，能看懂一张原理图，能说清一条指令是怎样从内存取出、译码并执行的。
-
-### STAGE 1 · 软件地基
-
-嵌入式软件的本质仍然是 C 程序和操作系统接口。这一层决定你后面写出来的固件是「能跑」还是「可靠」。
-
-| 仓库 | 关键主题 | 文档 |
-| :--- | :--- | :---: |
-| **[c-systems-programming-handbook](https://github.com/Ashleycurry/c-systems-programming-handbook)** | `Pointer` `Preprocessor` `Struct` `Dynamic Memory` `File I/O` `Debugging` | `2` |
-| **[data-structures-and-algorithms](https://github.com/Ashleycurry/data-structures-and-algorithms)** | `Array` `Linked List` `Stack` `Queue` `Binary Search` `Sorting` `Complexity` | `1` |
-| **[linux-shell-regex-notes](https://github.com/Ashleycurry/linux-shell-regex-notes)** | `Ubuntu` `Permission` `Process` `Bash` `awk` `crontab` `Regex` | `3` |
-
-> **阶段产出**：能写出指针安全、内存可控的 C 代码；能在资源受限的 MCU 上自行选择合适的数据结构；能用 Shell 完成构建、日志分析和自动化。
-
-### STAGE 2 · 系统开发
-
-把前两层的能力落到真实芯片与真实系统上：先裸机，再上 RTOS，最后进入 Linux 用户态。
-
-| 仓库 | 关键主题 | 文档 |
-| :--- | :--- | :---: |
-| **[stm32-mcu-development-notes](https://github.com/Ashleycurry/stm32-mcu-development-notes)** | `GPIO` `HAL` `NVIC` `USART` `I2C` `Timer` `DMA` `ADC` `SPI` `FSMC` `CAN` `Ethernet` `BLE` `LoRa` `RTC` `Watchdog` | `3` |
-| **[freertos-learning-notes](https://github.com/Ashleycurry/freertos-learning-notes)** | `Scheduler` `Task` `Queue` `Semaphore` `Mutex` `Event Group` `Task Notification` `Tickless` `Heap` | `1` |
-| **[linux-application-development-notes](https://github.com/Ashleycurry/linux-application-development-notes)** | `GCC` `Makefile` `File I/O` `Process` `Thread` `IPC` `Socket` `Daemon` `epoll` | `1` |
-
-> **阶段产出**：能独立完成外设驱动与寄存器配置；能把裸机程序重构为多任务系统并处理优先级与资源竞争；能写多线程网络服务并定位并发问题。
-
-## 按目标选择路径
-
-不是每个人都需要走完全程。按你现在的目标挑一条主线，其余作为补充阅读。
-
-| 目标方向 | 推荐路径 |
+| 仓库 | 简介 |
 | :--- | :--- |
-| 裸机固件 / RTOS 固件 | `digital-logic` → `c-systems` → `data-structures` → `stm32-mcu` → `freertos` |
-| 硬件设计 / 板级工程 | `analog-circuits` → `digital-logic` → `schematic-and-pcb` |
-| 嵌入式 Linux / 系统软件 | `linux-shell-regex` → `c-systems` → `data-structures` → `linux-application` |
-| 从零建立完整认知 | STAGE 0 → STAGE 1 → STAGE 2 顺序推进 |
+| `01` [**c-systems-programming-handbook**](https://github.com/Ashleycurry/c-systems-programming-handbook) | C 语言核心语法、指针、预处理器、自定义类型、动态内存与文件操作 |
+| `02` [**data-structures-and-algorithms**](https://github.com/Ashleycurry/data-structures-and-algorithms) | 数组、链表、栈、队列，以及查找、排序算法与复杂度分析 |
+| `03` [**analog-circuits-and-components**](https://github.com/Ashleycurry/analog-circuits-and-components) | 电学基础、电阻电容电感、二极管 / 三极管 / MOS 管与典型电路实践 |
+| `04` [**digital-logic-and-computer-organization**](https://github.com/Ashleycurry/digital-logic-and-computer-organization) | 逻辑门、触发器、冯诺依曼模型、指令集、总线与引导流程 |
+| `05` [**schematic-and-pcb-design**](https://github.com/Ashleycurry/schematic-and-pcb-design) | 嘉立创 EDA 原理图绘制、PCB 布局布线、封装设计与焊接技能 |
+| `06` [**stm32-mcu-development-notes**](https://github.com/Ashleycurry/stm32-mcu-development-notes) | GPIO、中断、定时器、DMA、ADC、SPI、CAN、以太网与低功耗管理 |
+| `07` [**freertos-learning-notes**](https://github.com/Ashleycurry/freertos-learning-notes) | 任务调度、内核移植、队列、信号量、事件组、任务通知与内存管理 |
+| `08` [**linux-shell-regex-notes**](https://github.com/Ashleycurry/linux-shell-regex-notes) | Ubuntu 系统管理、Shell 脚本编程与正则表达式文本处理 |
+| `09` [**linux-application-development-notes**](https://github.com/Ashleycurry/linux-application-development-notes) | GCC 工具链、文件 I/O、进程线程、进程间通信、Socket 与 epoll |
 
 ## 配套工程实践
 
@@ -141,40 +120,10 @@ repository/
 - 每个仓库末尾附有 `关键词` 段落，列出该仓库覆盖的技术术语，便于搜索。
 - 内容范围以课程资料为准，不额外宣讲未经实测的结论。
 
-## 技术栈
-
-<div align="center">
-
-**Embedded**
-
-<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" alt="C" />
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" />
-<img src="https://img.shields.io/badge/ARM_Cortex--M-0091BD?style=for-the-badge&logo=arm&logoColor=white" alt="ARM Cortex-M" />
-<img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white" alt="STM32" />
-<img src="https://img.shields.io/badge/FreeRTOS-2C3E50?style=for-the-badge" alt="FreeRTOS" />
-
-**Toolchain & System**
-
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
-<img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash" />
-<img src="https://img.shields.io/badge/POSIX-0EA5E9?style=for-the-badge" alt="POSIX" />
-<img src="https://img.shields.io/badge/GCC-A42E2B?style=for-the-badge&logo=gnu&logoColor=white" alt="GCC" />
-<img src="https://img.shields.io/badge/Makefile-6D00CC?style=for-the-badge" alt="Makefile" />
-<img src="https://img.shields.io/badge/CMake-064F8C?style=for-the-badge&logo=cmake&logoColor=white" alt="CMake" />
-
-**Hardware Design**
-
-<img src="https://img.shields.io/badge/EasyEDA-0EA5E9?style=for-the-badge" alt="EasyEDA" />
-<img src="https://img.shields.io/badge/Keil_MDK-394049?style=for-the-badge" alt="Keil MDK" />
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-
-</div>
-
 ## 相关链接
 
 - **个人主页**：[github.com/Ashleycurry](https://github.com/Ashleycurry)
 - **技术博客**：[xiaogao-code.space](https://xiaogao-code.space)
-- **博客源码**：[xiaogao-blog-source](https://github.com/Ashleycurry/xiaogao-blog-source)
 
 ## License
 

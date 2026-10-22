@@ -9,12 +9,28 @@
 <p>
   <a href="https://github.com/Ashleycurry?tab=repositories"><img src="https://img.shields.io/badge/Repositories-9-0EA5E9?style=flat-square&logo=github&logoColor=white" alt="Repositories" /></a>
   <img src="https://img.shields.io/badge/Course_Docs-16-0284C7?style=flat-square" alt="Course documents" />
-  <img src="https://img.shields.io/badge/Stages-3-38BDF8?style=flat-square" alt="Stages" />
   <img src="https://img.shields.io/badge/Language-中文%20%7C%20English-BAE6FD?style=flat-square" alt="Bilingual" />
   <img src="https://img.shields.io/badge/License-MIT-0369A1?style=flat-square" alt="MIT" />
 </p>
 
 [中文](README.md) | [English](README-English.md)
+
+<p>
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black" alt="C" />
+  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" alt="C++" />
+  <img src="https://img.shields.io/badge/ARM_Cortex--M-0091BD?style=flat-square&logo=arm&logoColor=white" alt="ARM Cortex-M" />
+  <img src="https://img.shields.io/badge/STM32-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white" alt="STM32" />
+  <img src="https://img.shields.io/badge/FreeRTOS-2C3E50?style=flat-square" alt="FreeRTOS" />
+  <img src="https://img.shields.io/badge/EasyEDA-0EA5E9?style=flat-square" alt="EasyEDA" />
+  <br />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white" alt="Bash" />
+  <img src="https://img.shields.io/badge/GCC-A42E2B?style=flat-square&logo=gnu&logoColor=white" alt="GCC" />
+  <img src="https://img.shields.io/badge/Makefile-6D00CC?style=flat-square" alt="Makefile" />
+  <img src="https://img.shields.io/badge/CMake-064F8C?style=flat-square&logo=cmake&logoColor=white" alt="CMake" />
+  <img src="https://img.shields.io/badge/Keil_MDK-394049?style=flat-square" alt="Keil MDK" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
+</p>
 
 </div>
 
@@ -24,94 +40,57 @@
 
 This is an **index repository**. It does not store the course material itself.
 
-It reorganizes the embedded systems notes scattered across 9 independent repositories into a single executable path: **hardware foundation → software foundation → system development**. Each repository covers exactly one knowledge domain, and can be cloned and studied on its own or followed in sequence along this path.
+It strings the embedded systems notes scattered across 9 independent repositories into a single reading path, running from language fundamentals through to system development. Each repository covers exactly one knowledge domain, and can be cloned and studied on its own or followed in numerical order.
 
 ```text
 > power on ...
 [BOOT] loading embedded-roadmap v1.0.0
-[ OK ] hardware layer   · 3 repositories   · analog / digital / pcb
-[ OK ] software layer   · 3 repositories   · c / ds&a / linux
-[ OK ] system layer     · 3 repositories   · stm32 / freertos / linux-app
-[INFO] recommended entry : analog-circuits-and-components
+[ OK ] 01-02  language & algorithms  · c / data structures
+[ OK ] 03-05  circuits & hardware    · analog / digital / pcb
+[ OK ] 06-09  chips & systems        · stm32 / freertos / linux
+[INFO] recommended entry : c-systems-programming-handbook
 [INFO] target            : read a datasheet, bring up a chip, ship a firmware
 ```
 
 ## System Overview
 
 ```mermaid
-flowchart LR
-    subgraph S0["STAGE 0 · Hardware"]
-        direction TB
-        A1["Analog Circuits<br/>and Components"]
-        A2["Digital Logic<br/>and Computer Org."]
-        A3["Schematic<br/>and PCB Design"]
-    end
+flowchart TD
+    N1["01 · C Language"]
+    N2["02 · Data Structures"]
+    N3["03 · Analog Circuits"]
+    N4["04 · Digital Logic"]
+    N5["05 · Schematic and PCB"]
+    N6["06 · STM32 MCU"]
+    N7["07 · FreeRTOS"]
+    N8["08 · Linux and Shell"]
+    N9["09 · Linux Applications"]
 
-    subgraph S1["STAGE 1 · Software"]
-        direction TB
-        B1["C Language<br/>and Systems"]
-        B2["Data Structures<br/>and Algorithms"]
-        B3["Linux · Shell<br/>Regular Expressions"]
-    end
+    N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> N8 --> N9
 
-    subgraph S2["STAGE 2 · Systems"]
-        direction TB
-        C1["STM32 MCU<br/>Development"]
-        C2["FreeRTOS<br/>Real-Time OS"]
-        C3["Linux Application<br/>Development"]
-    end
-
-    S0 ==> S1 ==> S2
+    classDef soft fill:#0F172A,stroke:#38BDF8,color:#BAE6FD,stroke-width:1px
+    classDef hw fill:#1E3A8A,stroke:#7DD3FC,color:#E0F2FE,stroke-width:1px
+    classDef sys fill:#0EA5E9,stroke:#BAE6FD,color:#F8FAFC,stroke-width:1px
+    class N1,N2 soft
+    class N3,N4,N5 hw
+    class N6,N7,N8,N9 sys
 ```
 
-## Learning Path
+## Repository Index
 
-### STAGE 0 · Hardware Foundation
+Listed in recommended reading order, from language fundamentals through to system development.
 
-Build intuition for current, logic levels, timing, and real devices first — then see how a chip is designed and how it ends up on a board.
-
-| Repository | Key Topics | Docs |
-| :--- | :--- | :---: |
-| **[analog-circuits-and-components](https://github.com/Ashleycurry/analog-circuits-and-components)** | `Ohm's Law` `RLC` `Diode` `BJT` `MOSFET` `Pull-up/Down` `Filter` `Multimeter` `Oscilloscope` | `2` |
-| **[digital-logic-and-computer-organization](https://github.com/Ashleycurry/digital-logic-and-computer-organization)** | `Logic Gates` `Flip-Flop` `ALU` `Von Neumann` `Instruction Set` `Bus` `Bootloader` | `1` |
-| **[schematic-and-pcb-design](https://github.com/Ashleycurry/schematic-and-pcb-design)** | `EasyEDA` `Schematic` `Footprint` `Multi-layer` `DRC` `Soldering` | `2` |
-
-> **Outcome**: read the key parameters of a datasheet, follow a schematic, and explain how an instruction is fetched, decoded, and executed.
-
-### STAGE 1 · Software Foundation
-
-Embedded software is still C programs and operating system interfaces. This layer decides whether your firmware merely runs, or actually holds up.
-
-| Repository | Key Topics | Docs |
-| :--- | :--- | :---: |
-| **[c-systems-programming-handbook](https://github.com/Ashleycurry/c-systems-programming-handbook)** | `Pointer` `Preprocessor` `Struct` `Dynamic Memory` `File I/O` `Debugging` | `2` |
-| **[data-structures-and-algorithms](https://github.com/Ashleycurry/data-structures-and-algorithms)** | `Array` `Linked List` `Stack` `Queue` `Binary Search` `Sorting` `Complexity` | `1` |
-| **[linux-shell-regex-notes](https://github.com/Ashleycurry/linux-shell-regex-notes)** | `Ubuntu` `Permission` `Process` `Bash` `awk` `crontab` `Regex` | `3` |
-
-> **Outcome**: write pointer-safe C with controlled memory usage, choose appropriate data structures under tight MCU constraints, and automate builds and log analysis from the shell.
-
-### STAGE 2 · System Development
-
-Apply the two layers above to real silicon and real systems: bare-metal first, then an RTOS, then Linux user space.
-
-| Repository | Key Topics | Docs |
-| :--- | :--- | :---: |
-| **[stm32-mcu-development-notes](https://github.com/Ashleycurry/stm32-mcu-development-notes)** | `GPIO` `HAL` `NVIC` `USART` `I2C` `Timer` `DMA` `ADC` `SPI` `FSMC` `CAN` `Ethernet` `BLE` `LoRa` `RTC` `Watchdog` | `3` |
-| **[freertos-learning-notes](https://github.com/Ashleycurry/freertos-learning-notes)** | `Scheduler` `Task` `Queue` `Semaphore` `Mutex` `Event Group` `Task Notification` `Tickless` `Heap` | `1` |
-| **[linux-application-development-notes](https://github.com/Ashleycurry/linux-application-development-notes)** | `GCC` `Makefile` `File I/O` `Process` `Thread` `IPC` `Socket` `Daemon` `epoll` | `1` |
-
-> **Outcome**: configure peripherals and registers independently, refactor bare-metal code into a multi-task system with correct priority and resource handling, and build concurrent network services while diagnosing race conditions.
-
-## Choose a Path by Goal
-
-Not everyone needs the full journey. Pick the main line that matches your goal and treat the rest as supplementary reading.
-
-| Goal | Recommended Path |
+| Repository | Description |
 | :--- | :--- |
-| Bare-metal / RTOS firmware | `digital-logic` → `c-systems` → `data-structures` → `stm32-mcu` → `freertos` |
-| Hardware design / board-level engineering | `analog-circuits` → `digital-logic` → `schematic-and-pcb` |
-| Embedded Linux / systems software | `linux-shell-regex` → `c-systems` → `data-structures` → `linux-application` |
-| Complete understanding from scratch | STAGE 0 → STAGE 1 → STAGE 2 in order |
+| `01` [**c-systems-programming-handbook**](https://github.com/Ashleycurry/c-systems-programming-handbook) | C core syntax, pointers, preprocessor, custom types, dynamic memory, and file I/O |
+| `02` [**data-structures-and-algorithms**](https://github.com/Ashleycurry/data-structures-and-algorithms) | Arrays, linked lists, stacks, queues, searching and sorting with complexity analysis |
+| `03` [**analog-circuits-and-components**](https://github.com/Ashleycurry/analog-circuits-and-components) | Electrical fundamentals, RLC components, diodes, BJTs, MOSFETs, and practical circuits |
+| `04` [**digital-logic-and-computer-organization**](https://github.com/Ashleycurry/digital-logic-and-computer-organization) | Logic gates, flip-flops, Von Neumann model, instruction sets, buses, and boot flow |
+| `05` [**schematic-and-pcb-design**](https://github.com/Ashleycurry/schematic-and-pcb-design) | EasyEDA schematic capture, PCB layout and routing, footprint design, and soldering |
+| `06` [**stm32-mcu-development-notes**](https://github.com/Ashleycurry/stm32-mcu-development-notes) | GPIO, interrupts, timers, DMA, ADC, SPI, CAN, Ethernet, and low-power management |
+| `07` [**freertos-learning-notes**](https://github.com/Ashleycurry/freertos-learning-notes) | Task scheduling, kernel porting, queues, semaphores, event groups, and memory management |
+| `08` [**linux-shell-regex-notes**](https://github.com/Ashleycurry/linux-shell-regex-notes) | Ubuntu system administration, shell scripting, and regular expression text processing |
+| `09` [**linux-application-development-notes**](https://github.com/Ashleycurry/linux-application-development-notes) | GCC toolchain, file I/O, processes and threads, IPC, sockets, and epoll |
 
 ## Hands-on Projects
 
@@ -141,40 +120,10 @@ repository/
 - Every repository ends with a `关键词` (keywords) section listing the technical terms it covers, for easier search.
 - Scope follows the source course material; no untested conclusions are stated.
 
-## Tech Stack
-
-<div align="center">
-
-**Embedded**
-
-<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" alt="C" />
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++" />
-<img src="https://img.shields.io/badge/ARM_Cortex--M-0091BD?style=for-the-badge&logo=arm&logoColor=white" alt="ARM Cortex-M" />
-<img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white" alt="STM32" />
-<img src="https://img.shields.io/badge/FreeRTOS-2C3E50?style=for-the-badge" alt="FreeRTOS" />
-
-**Toolchain & System**
-
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
-<img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash" />
-<img src="https://img.shields.io/badge/POSIX-0EA5E9?style=for-the-badge" alt="POSIX" />
-<img src="https://img.shields.io/badge/GCC-A42E2B?style=for-the-badge&logo=gnu&logoColor=white" alt="GCC" />
-<img src="https://img.shields.io/badge/Makefile-6D00CC?style=for-the-badge" alt="Makefile" />
-<img src="https://img.shields.io/badge/CMake-064F8C?style=for-the-badge&logo=cmake&logoColor=white" alt="CMake" />
-
-**Hardware Design**
-
-<img src="https://img.shields.io/badge/EasyEDA-0EA5E9?style=for-the-badge" alt="EasyEDA" />
-<img src="https://img.shields.io/badge/Keil_MDK-394049?style=for-the-badge" alt="Keil MDK" />
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-
-</div>
-
 ## Links
 
 - **Profile**: [github.com/Ashleycurry](https://github.com/Ashleycurry)
 - **Blog**: [xiaogao-code.space](https://xiaogao-code.space)
-- **Blog source**: [xiaogao-blog-source](https://github.com/Ashleycurry/xiaogao-blog-source)
 
 ## License
 
